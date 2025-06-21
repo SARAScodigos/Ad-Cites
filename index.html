@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inicio | Varadero Smart</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+  <script defer src="js/menu.js"></script>
+</head>
+
+<body>
+  <header class="top-bar">
+    <button class="menu-toggle" id="menuToggle">☰</button>
+    <span>Varadero Smart</span>
+    <span id="estadoCuenta" style="margin-left:auto; cursor:pointer;"></span>
+  </header>
+  <div id="loginOverlay" class="overlay-login">
+    <div class="popup-login">
+      <h3>Iniciar sesión</h3>
+      <form id="formLoginMini">
+        <input type="email" name="correo" placeholder="Correo" required />
+        <input type="password" name="clave" placeholder="Clave" required />
+        <button type="submit">Acceder</button>
+      </form>
+      <button id="cerrarOverlay" class="btn-cerrar">×</button>
+    </div>
+  </div>
+
+
+  <aside class="menu-lateral" id="menuLateral">
+    <nav>
+      <ul>
+        <li><a href="index.html" class="activo">Inicio</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="configuracion.html">Configuración</a></li>
+        <li><a href="cuenta.html">Cuenta</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="contenido-principal">
+    <section class="bienvenida">
+      <h1>¡Bienvenido a Varadero Smart!</h1>
+      <p>Revolucionamos la forma de gestionar espacios de varado. Reserva de forma rápida, segura y desde cualquier
+        lugar.</p>
+    </section>
+
+    <section class="mision-vision">
+      <h2>Misión</h2>
+      <p>Ofrecer soluciones digitales eficientes y adaptables a cualquier tipo de negocio.</p>
+
+      <h2>Visión</h2>
+      <p>Ser líderes en innovación tecnológica para reservas inteligentes en Latinoamérica.</p>
+    </section>
+  </main>
+  <script src="js/auth_popup.js"></script>
+</body>
+
+</html>

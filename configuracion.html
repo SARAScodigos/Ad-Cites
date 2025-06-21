@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Configuración</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <script defer src="js/menu.js"></script>
+</head>
+
+<body>
+    <header class="top-bar">
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <span>Varadero Smart</span>
+        <span id="estadoCuenta" style="margin-left:auto; cursor:pointer;"></span>
+    </header>
+
+    <aside class="menu-lateral" id="menuLateral">
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="configuracion.html" class="activo">Configuración</a></li>
+                <li><a href="cuenta.html">Cuenta</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="contenido-principal">
+        <h2>Gestión de Reservas</h2>
+        <div id="tabla-reservas" class="grid-reservas"></div>
+        <button onclick="abrirFormularioReserva()">➕ Nueva reserva</button>
+        <div id="formulario-reserva" class="modal-formulario" style="display:none;">
+            <h3>Crear Reserva</h3>
+            <form id="formReserva">
+                <label>Usuario:
+                    <select name="usuario_id" id="usuario_id_crear" required>
+                        <option value="">-- Seleccione usuario --</option>
+                    </select>
+                </label>
+
+                <label>Lugar:
+                    <select name="lugar_id" id="lugar_id_crear" required>
+                        <option value="">-- Seleccione lugar --</option>
+                    </select>
+                </label>
+
+                <label>Tipo de embarcación:
+                    <input type="text" name="tipo_embarcacion" required>
+                </label>
+
+                <label>Entrada:
+                    <input type="date" name="fecha_entrada" id="fecha_entrada" required>
+                </label>
+
+                <label>Salida:
+                    <input type="date" name="fecha_salida" required>
+                </label>
+
+                <fieldset>
+                    <legend>🛠️ Servicios requeridos:</legend>
+                    <label><input type="checkbox" name="requiere_pintura"> 🖌️ Pintura</label>
+                    <label><input type="checkbox" name="requiere_mecanica"> 🔧 Mecánica</label>
+                    <label><input type="checkbox" name="requiere_motor"> ⚙️ Motor</label>
+                </fieldset>
+
+                <div class="form-actions">
+                    <button type="submit">Guardar</button>
+                    <button type="button" onclick="cerrarFormulario()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+
+
+
+        <div id="modal-reserva" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+background:rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:9999;">
+            <div
+                style="background:white; padding:20px; border-radius:8px; width:90%; max-width:500px; position:relative;">
+                <button onclick="cerrarFormularioReserva()"
+                    style="position:absolute; top:5px; right:10px; background:none; border:none; font-size:20px; cursor:pointer;">❌</button>
+                <h3 style="text-align:center;">Editar Reserva</h3>
+                <form id="formReservaEditar" class="form-grid">
+                    <div class="form-row">
+                        <label>Usuario:</label>
+                        <select name="usuario_id" id="usuario_id_editar" required></select>
+                    </div>
+                    <select name="lugar_id" id="lugar_id_editar" required>
+                        <option value="">-- Seleccione lugar --</option>
+                    </select>
+
+                    <div class="form-row">
+                        <label>Tipo de embarcación:</label>
+                        <input type="text" name="tipo_embarcacion" required>
+                    </div>
+                    <div class="form-row">
+                        <label>Entrada:</label>
+                        <input type="date" name="fecha_entrada" required>
+                    </div>
+                    <div class="form-row">
+                        <label>Salida:</label>
+                        <input type="date" name="fecha_salida" required>
+                    </div>
+                    <div class="form-row">
+                        <label>Servicios requeridos:</label><br>
+                        <label><input type="checkbox" name="requiere_pintura"> Pintura</label>
+                        <label><input type="checkbox" name="requiere_mecanica"> Mecánica</label>
+                        <label><input type="checkbox" name="requiere_motor"> Motor</label>
+                    </div>
+                    <div class="form-row" style="text-align:center;">
+                        <button type="submit">Actualizar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <h2>Registrar nuevo usuario</h2>
+        <form id="formRegistroUsuario">
+            <input type="text" name="nombre" placeholder="Nombre completo" required>
+            <input type="email" name="correo" placeholder="Correo electrónico" required>
+            <input type="password" name="clave" placeholder="Contraseña" required>
+            <button type="submit">Registrar Usuario</button>
+        </form>
+        <div id="mensaje-registro"></div>
+
+        <h2>Gestión de Lugares</h2>
+        <div id="tabla-lugares"></div>
+    </main>
+
+    <script src="js/auth_popup.js"></script>
+    <script>
+        if (!localStorage.getItem('token')) {
+            location.href = "index.html";
+        }
+    </script>
+    <script src="js/configuracion.js"></script>
+</body>
+
+</html>

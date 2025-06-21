@@ -1,0 +1,47 @@
+.casillas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.casilla {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    background-color: #00a8a8;
+    /* libre */
+    border: 1px solid #ccc;
+}
+
+.casilla.ocupada {
+    background-color: #ff4d4d;
+    /* ocupada */
+}
+
+.casillas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.casilla {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    background-color: #d1f2eb;
+    /* libre */
+    border: 1px solid #ccc;
+    transition: 0.3s;
+}
+
+.casilla.ocupada {
+    background-color: #e74c3c;
+    /* rojo */
+}
+
+.casilla.libre {
+    background-color: #2ecc71;
+    /* verde */
+}

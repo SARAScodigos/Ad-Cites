@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Servicios</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <script defer src="js/menu.js"></script>
+    <script defer src="js/auth_popup.js"></script>
+    <script defer src="js/dashboard_visual.js"></script>
+</head>
+
+<body>
+    <header class="top-bar">
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <span>Varadero Smart</span>
+        <span id="estadoCuenta" style="margin-left:auto; cursor:pointer;"></span>
+    </header>
+
+    <div id="loginOverlay" class="overlay-login">
+        <div class="popup-login">
+            <h3>Iniciar sesión</h3>
+            <form id="formLoginMini">
+                <input type="email" name="correo" placeholder="Correo" required />
+                <input type="password" name="clave" placeholder="Clave" required />
+                <button type="submit">Acceder</button>
+            </form>
+            <button id="cerrarOverlay" class="btn-cerrar">×</button>
+        </div>
+    </div>
+
+    <aside class="menu-lateral" id="menuLateral">
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html" class="activo">Servicios</a></li>
+                <li><a href="configuracion.html">Configuración</a></li>
+                <li><a href="cuenta.html">Cuenta</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="contenido-principal">
+        <h1>Servicios</h1>
+        <p>Visualiza gráficamente la disponibilidad de tus espacios.</p>
+        <form id="formCrearLugar" style="margin-bottom:2rem; display:none;">
+            <input type="text" id="nombreLugar" placeholder="Nombre del lugar" required>
+            <input type="number" id="capacidadLugar" placeholder="Capacidad" min="1" required>
+            <input type="text" id="zonaLugar" placeholder="Zona" required>
+            <button type="submit">Crear lugar</button>
+        </form>
+        <div id="contenedor-lugares"></div>
+    </main>
+</body>
+
+</html>
