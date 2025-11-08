@@ -1,3 +1,5 @@
+const apiUrl = "https://backreservas.systempiura.com";
+
 document.addEventListener('DOMContentLoaded', async () => {
     const token = localStorage.getItem('token');
     if (!token) return;
@@ -6,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const fin = new Date(Date.now() + 86400000).toISOString().slice(0, 10); // mañana
 
     try {
-        const res = await fetch(`http://localhost:5000/api/disponibilidad?inicio=${hoy}&fin=${fin}`, {
+        const res = await fetch(`${apiUrl}/api/disponibilidad?inicio=${hoy}&fin=${fin}`, {
             headers: { 'Authorization': 'Bearer ' + token }
         });
 
@@ -73,7 +75,7 @@ async function mostrarFormularioSiAdmin() {
     const token = localStorage.getItem('token');
     if (!token) return;
     try {
-        const res = await fetch('http://localhost:5000/api/usuario/info', {
+        const res = await fetch(`${apiUrl}/api/usuario/info`, {
             headers: { 'Authorization': 'Bearer ' + token }
         });
         const data = await res.json();
@@ -93,7 +95,7 @@ document.getElementById('formCrearLugar').addEventListener('submit', async funct
     const zona = document.getElementById('zonaLugar').value;
 
     try {
-        const res = await fetch('http://localhost:5000/api/admin/lugares', {
+        const res = await fetch(`${apiUrl}/api/admin/lugares`, {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + token,

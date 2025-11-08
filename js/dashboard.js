@@ -1,3 +1,6 @@
+const apiUrl = "https://backreservas.systempiura.com";
+
+
 
 window.addEventListener('DOMContentLoaded', async () => {
     const token = localStorage.getItem('token');

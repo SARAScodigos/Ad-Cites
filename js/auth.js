@@ -1,10 +1,12 @@
 // LOGIN
+const apiUrl = "https://backreservas.systempiura.com";
+
 document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const correo = e.target.correo.value;
     const clave = e.target.clave.value;
 
-    const res = await fetch('http://localhost:5000/api/login', {
+    const res = await fetch(`${apiUrl}/api/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ correo, clave }),
@@ -37,7 +39,7 @@ document.getElementById('registroForm')?.addEventListener('submit', async (e) =>
 
     const token = localStorage.getItem('token');
 
-    const res = await fetch('http://localhost:5000/api/registro', {
+    const res = await fetch(`${apiUrl}/api/registro`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

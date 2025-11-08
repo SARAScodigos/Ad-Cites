@@ -1,3 +1,5 @@
+const apiUrl = "https://backreservas.systempiura.com";
+
 document.addEventListener("DOMContentLoaded", () => {
     // Cerrar sesión
     const cerrar = document.getElementById("cerrarSesion");
@@ -13,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const token = localStorage.getItem("token");
 
     if (token && infoDiv) {
-        fetch('http://localhost:5000/api/usuario/info', {
+        fetch(`${apiUrl}/api/usuario/info`, {
             headers: {
                 'Authorization': 'Bearer ' + token
             }

@@ -1,3 +1,5 @@
+const apiUrl = "https://backreservas.systempiura.com";
+
 document.addEventListener('DOMContentLoaded', async () => {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -17,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const reservaId = 1;
 
     // Cargar reserva actual
-    const res = await fetch('http://localhost:5000/api/admin/reservas', { headers });
+    const res = await fetch(`${apiUrl}/api/admin/reservas`, { headers });
     const reservas = await res.json();
     const reserva = reservas.find(r => r.reserva_id === reservaId);
 
@@ -43,7 +45,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             tipo_embarcacion: form.tipo_embarcacion.value
         };
 
-        const response = await fetch(`http://localhost:5000/api/admin/reservas/${reservaId}`, {
+        const response = await fetch(`${apiUrl}/api/admin/reservas/${reservaId}`, {
             method: 'PUT',
             headers,
             body: JSON.stringify(datos)

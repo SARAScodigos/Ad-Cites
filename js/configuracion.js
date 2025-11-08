@@ -1,3 +1,5 @@
+const apiUrl = "https://backreservas.systempiura.com";
+
 document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('fecha_entrada').value = new Date().toISOString().split("T")[0];
     const token = localStorage.getItem('token');
@@ -37,7 +39,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         fin.setDate(hoy.getDate() + 30);  // Mostrar 5 días hacia adelante
         const fechaFin = fin.toISOString().split("T")[0];
 
-        const url = `http://localhost:5000/api/disponibilidad?inicio=${fechaInicio}&fin=${fechaFin}`;
+        const url = `${apiUrl}/api/disponibilidad?inicio=${fechaInicio}&fin=${fechaFin}`;
         const res = await fetch(url, { headers });
 
         if (res.status === 401) return cerrarSesionPorToken();
@@ -80,7 +82,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     };
 
     const cargarLugaresSelect = async () => {
-        const res = await fetch('http://localhost:5000/api/disponibilidad?inicio=2025-06-14&fin=2025-06-18', { headers });
+        const res = await fetch(`${apiUrl}/api/disponibilidad?inicio=2025-06-14&fin=2025-06-18`, { headers });
         const lugares = await res.json();
         const select = document.getElementById('lugar_id_editar');
         select.innerHTML = '<option value="">-- Seleccione lugar --</option>';
@@ -96,7 +98,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
     const cargarReservas = async () => {
-        const res = await fetch('http://localhost:5000/api/admin/reservas', { headers });
+        const res = await fetch(`${apiUrl}/api/admin/reservas`, { headers });
         if (res.status === 401) return cerrarSesionPorToken();
         const reservas = await res.json();
         tablaReservas.innerHTML = '';
@@ -124,7 +126,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     };
     const cargarUsuarios = async () => {
-        const res = await fetch('http://localhost:5000/api/admin/usuarios', { headers });
+        const res = await fetch(`${apiUrl}/api/admin/usuarios`, { headers });
         const usuarios = await res.json();
         console.log("👀 Usuarios recibidos:", usuarios);
 
@@ -152,7 +154,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             fecha_salida: formCrear.fecha_salida.value
         };
 
-        const res = await fetch('http://localhost:5000/api/admin/reservas', {
+        const res = await fetch(`${apiUrl}/api/admin/reservas`, {
             method: 'POST',
             headers,
             body: JSON.stringify(datos)
@@ -187,7 +189,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             requiere_motor: formEditar.requiere_motor.checked
         };
 
-        const url = `http://localhost:5000/api/admin/reservas/${reservaEditandoId}`;
+        const url = `${apiUrl}/api/admin/reservas/${reservaEditandoId}`;
         const res = await fetch(url, {
             method: 'PUT',
             headers,
@@ -216,7 +218,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         fin.setDate(hoy.getDate() + 5);
         const fechaFin = fin.toISOString().split("T")[0];
 
-        const res = await fetch(`http://localhost:5000/api/disponibilidad?inicio=${fechaInicio}&fin=${fechaFin}`, { headers });
+        const res = await fetch(`${apiUrl}/api/disponibilidad?inicio=${fechaInicio}&fin=${fechaFin}`, { headers });
         const lugares = await res.json();
 
         const select = document.getElementById('lugar_id_crear');
@@ -230,7 +232,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     };
     window.editarReserva = async (id) => {
-        const res = await fetch('http://localhost:5000/api/admin/reservas', { headers });
+        const res = await fetch(`${apiUrl}/api/admin/reservas`, { headers });
         const reservas = await res.json();
         const reserva = reservas.find(r => r.reserva_id === id);
         console.log("🧾 Datos reserva:", reserva);
@@ -274,7 +276,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const confirmar = confirm('¿Eliminar esta reserva?');
         if (!confirmar) return;
 
-        const res = await fetch('http://localhost:5000/api/admin/reservas/' + id, {
+        const res = await fetch(`${apiUrl}/api/admin/reservas/${id}`, {
             method: 'DELETE',
             headers
         });
@@ -302,7 +304,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 clave: formRegistro.clave.value
             };
 
-            const res = await fetch('http://localhost:5000/api/registro', {
+            const res = await fetch(`${apiUrl}/api/registro`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
