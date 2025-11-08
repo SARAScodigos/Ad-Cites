@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Configuración</title>
     <link rel="stylesheet" href="css/estilos.css">
-    <script defer src="js/menu.js"></script>
+    <script defer src="js/menu.js" type="module"></script>
 </head>
 
 <body>
@@ -127,14 +127,15 @@ background:rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:
         <h2>Gestión de Lugares</h2>
         <div id="tabla-lugares"></div>
     </main>
+    <script src="js/config.js" type="module"></script>
 
-    <script src="js/auth_popup.js"></script>
+    <script src="js/auth_popup.js" type="module"></script>
     <script>
         if (!localStorage.getItem('token')) {
             location.href = "index.html";
         }
     </script>
-    <script src="js/configuracion.js"></script>
+    <script src="js/configuracion.js" type="module"></script>
 </body>
 
 </html>
