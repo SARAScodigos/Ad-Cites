@@ -1,4 +1,4 @@
-const apiUrl = "https://backreservas.systempiura.com";
+import { apiUrl } from './config.js';
 
 document.addEventListener("DOMContentLoaded", () => {
     const token = localStorage.getItem("token");

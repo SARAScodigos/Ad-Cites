@@ -1,6 +1,4 @@
-const apiUrl = "https://backreservas.systempiura.com";
-
-
+import { apiUrl } from './config.js';
 
 window.addEventListener('DOMContentLoaded', async () => {
     const token = localStorage.getItem('token');
@@ -11,7 +9,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        const res = await fetch('http://localhost:5000/api/disponibilidad', {
+        const res = await fetch(`${apiUrl}/api/disponibilidad`, {
             headers: { 'Authorization': 'Bearer ' + token }
         });
         if (res.status === 401) {

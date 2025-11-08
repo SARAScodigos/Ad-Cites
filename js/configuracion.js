@@ -1,4 +1,4 @@
-const apiUrl = "https://backreservas.systempiura.com";
+import { apiUrl } from './config.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('fecha_entrada').value = new Date().toISOString().split("T")[0];

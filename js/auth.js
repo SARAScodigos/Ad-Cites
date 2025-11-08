@@ -1,5 +1,5 @@
 // LOGIN
-const apiUrl = "https://backreservas.systempiura.com";
+import { apiUrl } from './config.js';
 
 document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
     e.preventDefault();
